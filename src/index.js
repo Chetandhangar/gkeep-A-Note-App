@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {NoteDataProvider} from './context/data-context'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <NoteDataProvider>
+        <App />
+    </NoteDataProvider> 
   </React.StrictMode>,
   document.getElementById('root')
 );

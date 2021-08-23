@@ -1,11 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
 import {Home} from './components'
+import {useNoteData} from './context/data-context'
 
 function App() {
   return (
     <div className="App">
-      Gkeep - A Note app
       <Home />
     </div>
   );
