@@ -1,6 +1,10 @@
 import {useNoteData} from '../../context/data-context'
 export const Note = () => {
-    const {title ,setTitle , description , setDescription, note,setNote} = useNoteData();
+    const {title ,setTitle ,
+         description , setDescription, 
+         note,setNote,
+         pinned, setPinned,
+        } = useNoteData();
 
     function handleTitleChange(event){
         setTitle(event.target.value)
@@ -8,14 +12,24 @@ export const Note = () => {
     function handleDescriptionChange(event){
         setDescription(event.target.value)
     }
+
+    function handlePinnedNote(){
+        setPinned(!pinned)
+    }
+
+
     function handleAddNote(){
         setNote([...note ,
              {
                  id :note.length ,
                  title : title,
-                 description : description
+                 description : description,
+                 isPinned : pinned
                 }]
-                )
+                );
+
+        setTitle("")
+        setDescription("")
     }
 
     console.log(note)
@@ -36,6 +50,9 @@ export const Note = () => {
                         placeholder="Description"
                         onChange={handleDescriptionChange}
                         />
+                    </div>
+                    <div>
+                        <button onClick={() => handlePinnedNote()}>Pinned</button>
                     </div>
                     <div>
                         <button onClick={() => handleAddNote()}>Add Note</button>
