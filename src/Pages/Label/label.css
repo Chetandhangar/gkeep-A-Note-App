@@ -1,0 +1,18 @@
+.label-container {
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+   
+}
+
+.label-details{
+    padding: 0.5rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+}
+
+.label-name {
+    color: white;
+    font-size: 1rem;
+    padding-left: 1rem;
+}

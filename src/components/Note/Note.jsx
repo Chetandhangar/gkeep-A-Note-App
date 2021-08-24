@@ -2,11 +2,13 @@ import {useNoteData} from '../../context/data-context'
 import {Dropdown,Modal,ModalHeader,ModalBody,DropdownItem,DropdownToggle,DropdownMenu, Form,FormGroup,Col,Button,Input,Label} from 'reactstrap'
 import {useState} from 'react'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faPalette, faThumbtack} from '@fortawesome/free-solid-svg-icons'
+import {faPalette, faThumbtack, faTrash} from '@fortawesome/free-solid-svg-icons';
+import './note.css'
 export const Note = () => {
     
     const[dropdownOpen , setDropdownOpen] = useState(false)
     const[modalOpen, setModalOpen] = useState(false)
+    
     
 
     const {title ,setTitle ,
@@ -16,7 +18,7 @@ export const Note = () => {
          labels,
          selectedLabel , setSelectedLabel,
          ColorsData,
-         selectedColor ,  setSelectedColor
+         selectedColor ,  setSelectedColor,
         } = useNoteData();
         
     function handleTitleChange(event){
@@ -38,7 +40,8 @@ export const Note = () => {
                  title : title,
                  description : description,
                  isPinned : pinned,
-                 label : selectedLabel
+                 label : selectedLabel,
+                 notecolor : selectedColor
                 }]
                 );
 
@@ -65,19 +68,19 @@ export const Note = () => {
     console.log(selectedColor)
 
         return(
-            <div>
+            <div className="note-form">
             <Form style={{backgroundColor : `${selectedColor}`}}>
                 {console.log(selectedColor,'from render')}
                  <FormGroup row> 
-                        <Col sm={6}>
+                        <Col sm={4}>
                         <Input 
                         style={{backgroundColor: "transparent", border:"none", color:"white"}}
                              value={title}
                              placeholder="Title"
                              onChange={handleTitleChange}
-                        />{" "}
+                        />
                         </Col>
-                        <Col sm={2}>
+                        <Col sm={1}>
                          <Button style={{backgroundColor: "transparent",border:"none"}}
                          onClick={() => handlePinnedNote()}
                          >
@@ -141,8 +144,3 @@ export const Note = () => {
             </div>  
         )
 }
-/*
-* <div>
-                        <button }>Pinned</button>
-                    </div>
-*/

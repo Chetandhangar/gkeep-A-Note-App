@@ -33,6 +33,8 @@ export function NoteDataProvider({children}){
         const [ColorsData ,setColorsData] = useState(COLORS)
         const [selectedColor , setSelectedColor] = useState("")
         const [selectedLabel  , setSelectedLabel] = useState("")
+       
+
     return(
         <NoteContext.Provider value={{title, setTitle, 
         description, setDescription,
@@ -41,7 +43,7 @@ export function NoteDataProvider({children}){
         pinned , setPinned,
         selectedLabel , setSelectedLabel,
        ColorsData,setColorsData,
-        selectedColor,setSelectedColor 
+        selectedColor,setSelectedColor,
         }}>
             {children}
         </NoteContext.Provider>
