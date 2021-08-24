@@ -1,7 +1,8 @@
 import {useNoteData} from '../../context/data-context'
 import {Dropdown,Modal,ModalHeader,ModalBody,DropdownItem,DropdownToggle,DropdownMenu, Form,FormGroup,Col,Button,Input,Label} from 'reactstrap'
 import {useState} from 'react'
-
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faPalette, faThumbtack} from '@fortawesome/free-solid-svg-icons'
 export const Note = () => {
     
     const[dropdownOpen , setDropdownOpen] = useState(false)
@@ -43,9 +44,12 @@ export const Note = () => {
 
         setTitle("")
         setDescription("")
+        setSelectedLabel("")
+        setSelectedColor("")
+        setPinned(false)
     }
 
-    console.log(note)
+    console.log(selectedColor,"color")
 
     const toggle = () => setDropdownOpen(!dropdownOpen)
     const toggelModal = () => setModalOpen(!modalOpen)
@@ -63,20 +67,28 @@ export const Note = () => {
         return(
             <div>
             <Form style={{backgroundColor : `${selectedColor}`}}>
+                {console.log(selectedColor,'from render')}
                  <FormGroup row> 
                         <Col sm={6}>
                         <Input 
-                        style={{backgroundColor: "transparent", border:"none"}}
+                        style={{backgroundColor: "transparent", border:"none", color:"white"}}
                              value={title}
                              placeholder="Title"
                              onChange={handleTitleChange}
                         />{" "}
                         </Col>
+                        <Col sm={2}>
+                         <Button style={{backgroundColor: "transparent",border:"none"}}
+                         onClick={() => handlePinnedNote()}
+                         >
+                         {pinned ? <FontAwesomeIcon icon={faThumbtack} color="red"/> : <FontAwesomeIcon icon={faThumbtack}/>}
+                        </Button> 
+                        </Col>
                     </FormGroup>
                     <FormGroup row> 
                         <Col sm={6}>
                         <Input 
-                            style={{backgroundColor: "transparent", border:"none",}}
+                            style={{backgroundColor: "transparent", border:"none",color:"white"}}
                             type="textarea"
                              value={description}
                              placeholder="Description"
@@ -103,31 +115,27 @@ export const Note = () => {
                             <Button
                             style={{backgroundColor: "transparent",border:"none"}}
                             onClick={() =>  toggelModal()}
-                            >Add Background Color
+                            ><FontAwesomeIcon icon={faPalette}/>
                             </Button>
-                            <Modal isOpen={modalOpen} toggle={toggelModal} 
-                            
-                           
-                            
+                            <Modal isOpen={modalOpen} toggle={toggelModal}  
                             >
                                 <ModalHeader>Color</ModalHeader>
                                 <ModalBody>
                                     {ColorsData.map((color) =>(
                                         <div key={color.id}>
-                                            <div onClick={() => handleSelectedColor(color.color)}>{color.color}</div>
+                                            <div style={{cursor :"pointer"}} onClick={() => handleSelectedColor(color.color)}>{color.color}</div>
                                         </div>
                                     ))}
                                 </ModalBody>
                             </Modal>
                         </Col>
-                        
-                    </FormGroup>
-                    <FormGroup>
-                    <Button 
-                    style={{backgroundColor: "transparent", border:"none"}}
-                    onClick={() => handleAddNote()}>
-                    Add Note
-                    </Button>
+                        <Col sm={2}>
+                        <Button 
+                            style={{backgroundColor: "transparent", border:"none"}}
+                            onClick={() => handleAddNote()}>
+                            Add Note
+                        </Button>
+                        </Col>
                     </FormGroup>
             </Form>
             </div>  
@@ -135,6 +143,6 @@ export const Note = () => {
 }
 /*
 * <div>
-                        <button onClick={() => handlePinnedNote()}>Pinned</button>
+                        <button }>Pinned</button>
                     </div>
 */
