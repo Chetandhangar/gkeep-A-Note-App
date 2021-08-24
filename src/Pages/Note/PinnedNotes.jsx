@@ -1,4 +1,4 @@
-import {Card,CardBody,CardTitle,CardText, Button,DropdownMenu,DropdownItem,Dropdown,DropdownToggle} from 'reactstrap'
+import {Card,CardBody,CardTitle,CardText, Button,Col} from 'reactstrap'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faPalette, faThumbtack , faTrash} from '@fortawesome/free-solid-svg-icons'
 import {  useNoteData } from "../../context/data-context";
@@ -38,18 +38,25 @@ export const PinnedNotes = ({pinnedNotes}) => {
                             <Card className="note-card" style={{backgroundColor : `${note.notecolor}`}}>
                                 <CardBody>
                                     <div className="row">
-                                    <CardTitle className="col-4">{note.title}</CardTitle>
+                                    <CardTitle className="col">{note.title}</CardTitle>
                                     <Button  style={{backgroundColor: "transparent",border:"none"}} 
-                                    className="col-1"
+                                    className="col"
                                     onClick={() => HandlePinnedNote(note.id)}
                                     >
                                     {note.isPinned ? <FontAwesomeIcon icon={faThumbtack} color="red"/> : <FontAwesomeIcon icon={faThumbtack}/>}
                                     </Button> 
                                     </div>
                                     <CardText>{note.description}</CardText>
-                                    <FontAwesomeIcon 
-                                    onClick={() => HandleDelteNote(note.id)}
-                                    icon={faTrash} color="red" className="btn-delete"/>
+                                    <div className="row">
+                                        <Col >
+                                            <CardText>{note.label}</CardText>
+                                        </Col>
+                                        <Col>
+                                        <FontAwesomeIcon 
+                                            onClick={() => HandleDelteNote(note.id)}
+                                            icon={faTrash} color="red" className="btn-delete"/>
+                                        </Col>
+                                    </div>
                                 </CardBody>
                             </Card>
                             </div>

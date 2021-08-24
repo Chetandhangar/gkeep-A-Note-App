@@ -5,12 +5,15 @@ import 'font-awesome/css/font-awesome.min.css';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {NoteDataProvider} from './context/data-context'
+import {NoteDataProvider} from './context/data-context';
+import {BrowserRouter as Router} from 'react-router-dom'
 
 ReactDOM.render(
   <React.StrictMode>
     <NoteDataProvider>
-        <App />
+        <Router>
+          <App />
+        </Router>
     </NoteDataProvider> 
   </React.StrictMode>,
   document.getElementById('root')

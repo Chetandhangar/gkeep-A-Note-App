@@ -16,3 +16,17 @@
     font-size: 1rem;
     padding-left: 1rem;
 }
+
+.btn-label-add{
+    background: transparent;
+    border: none;
+    padding: 0.5rem;
+}
+
+.btn-label-add-text{
+    padding-left: 0.5rem;
+}
+
+.note-card{
+    width: 50%;
+}
