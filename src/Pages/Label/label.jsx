@@ -21,15 +21,25 @@ export const RenderLabel = () =>{
             labelname : labelInput
         }])
         setLabelModal(!labelModal)
+        setLabelInput("")
     }
 
     return(
         <div className="label-container">
-            <Link to="/">Note</Link>
+            <div >
+            <FontAwesomeIcon className="label-link-icon" icon={faAngleDoubleRight} color="white"  />
+            <Link className="label-link" to="/">NOTE</Link>
+            </div>
+       
                 {labels.map(({id,labelname}) =>(
                     <div key={id} className="label-details">
                         <FontAwesomeIcon icon={faAngleDoubleRight} color="white"  />
-                        <Link to={`/label/${id}`}>{labelname}</Link>
+                        <Link 
+                        className="label-link"
+                        to={`/label/${id}`}
+                        >
+                        {labelname}
+                        </Link>
                     </div>
                 ))}
              <Button 
@@ -47,8 +57,9 @@ export const RenderLabel = () =>{
                     onChange={handelLabelInputChange}
                     placeholder="label"
                     />
-                    Label :{labelInput}
-                    <Button onClick={() => addLabel()}>
+                    <Button 
+                    className="btn-label-modal"
+                    onClick={() => addLabel()}>
                         Add
                     </Button>
                 </ModalBody>

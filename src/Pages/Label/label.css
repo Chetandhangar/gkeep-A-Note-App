@@ -23,10 +23,34 @@
     padding: 0.5rem;
 }
 
+.btn-label-add :hover{
+    color: #202124;
+}
+
 .btn-label-add-text{
     padding-left: 0.5rem;
+    
 }
 
 .note-card{
     width: 50%;
+}
+
+.label-link{
+    text-decoration: none;
+    color: white;
+    padding-left: 1rem;
+}
+
+.label-link :hover{
+    color: white;
+}
+.label-link-icon{
+    margin-left: 0.5rem;
+    margin-bottom: 0.5rem;
+    
+}
+
+.btn-label-modal{
+    margin-top: 1rem;
 }
