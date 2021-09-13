@@ -1,25 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import {Home} from './components'
+import {Header} from './components'
+import {RenderLabel} from './Pages'
+import { SelectedLabel } from './Pages'
+import {Switch, Route,Redirect} from 'react-router-dom'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <div className="row">
+          <div className="col-4">
+            <RenderLabel />
+          </div>
+          <Switch>
+          <div className="col-6">    
+          <Route exact path="/" component={Home}/>
+          <Route path="/label/:labelId" component={SelectedLabel}/>
+          <Redirect to="/" />
+       </div>
+          </Switch>
+      
+      </div>
     </div>
   );
 }
 
 export default App;
+
+
+//https://fontawesome.com/v5.15/how-to-use/on-the-web/using-with/react
+//https://fontawesome.com/v5.15/icons/trash-alt?style=regular
+//https://getbootstrap.com/docs/5.1/layout/grid/

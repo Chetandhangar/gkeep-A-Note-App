@@ -1,0 +1,13 @@
+.header-container{
+    border-bottom: solid white 0.1rem ; 
+    margin-bottom: 2rem;
+    margin-top: 0.5rem;
+
+}
+.app-brand{
+    font-size: 2rem;
+    color: white;
+    padding-top: 1rem;
+    padding-left: 2rem;
+    padding-bottom: 1rem;
+}

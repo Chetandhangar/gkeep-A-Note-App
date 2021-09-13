@@ -1,12 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'font-awesome/css/font-awesome.min.css';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {NoteDataProvider} from './context/data-context';
+import {BrowserRouter as Router} from 'react-router-dom'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <NoteDataProvider>
+        <Router>
+          <App />
+        </Router>
+    </NoteDataProvider> 
   </React.StrictMode>,
   document.getElementById('root')
 );

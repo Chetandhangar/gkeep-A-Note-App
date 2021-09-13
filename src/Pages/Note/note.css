@@ -1,0 +1,31 @@
+.note-card{
+    width: 40%; 
+}
+.note-details{
+    margin-top: 1.5rem;
+    color: white;
+}
+
+.btn-delete{
+    cursor: pointer;
+}
+
+.note-card-details{
+    padding: 0.3rem
+
+}
+.pinned-container{
+    margin-top: 3rem;
+}
+.pinned-header{
+    color: white;
+    font-size: 1rem;
+}
+
+.other-notes-container{
+    margin-top: 1rem;
+}
+.other-notes-header{
+    color: white;
+    font-size: 1rem;
+}
