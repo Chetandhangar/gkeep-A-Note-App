@@ -7,14 +7,17 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {NoteDataProvider} from './context/data-context';
 import {BrowserRouter as Router} from 'react-router-dom'
+import {AuthProvider} from './context/auth-context'
 
 ReactDOM.render(
   <React.StrictMode>
+    <Router>
     <NoteDataProvider>
-        <Router>
-          <App />
-        </Router>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
     </NoteDataProvider> 
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
