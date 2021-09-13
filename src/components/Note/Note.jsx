@@ -1,8 +1,8 @@
 import {useNoteData} from '../../context/data-context'
-import {Dropdown,Modal,ModalHeader,ModalBody,DropdownItem,DropdownToggle,DropdownMenu, Form,FormGroup,Col,Button,Input,Label} from 'reactstrap'
+import {Dropdown,Modal,ModalHeader,ModalBody,DropdownItem,DropdownToggle,DropdownMenu, Form,FormGroup,Col,Button,Input} from 'reactstrap'
 import {useState} from 'react'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faPalette, faThumbtack, faTrash} from '@fortawesome/free-solid-svg-icons';
+import {faPalette, faThumbtack} from '@fortawesome/free-solid-svg-icons';
 import './note.css'
 export const Note = () => {
     

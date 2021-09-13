@@ -1,7 +1,7 @@
 import './App.css';
 import {Home} from './components'
 import {Header} from './components'
-import {RenderLabel} from './Pages'
+import {Login, RenderLabel, SignUp} from './Pages'
 import { SelectedLabel } from './Pages'
 import {Switch, Route,Redirect} from 'react-router-dom'
 
@@ -17,6 +17,8 @@ function App() {
           <div className="col-6">    
           <Route exact path="/" component={Home}/>
           <Route path="/label/:labelId" component={SelectedLabel}/>
+          <Route path="login" component={Login}/>
+          <Route path="signup" component={SignUp} />
           <Redirect to="/" />
        </div>
           </Switch>
