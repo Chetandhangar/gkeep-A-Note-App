@@ -1,6 +1,5 @@
 import {Note} from '../../components/Note/Note'
-import {RenderNote} from '..'
-import {RenderLabel} from '..'
+import {RenderNote} from '..';
 
 
 export const Home = () => {

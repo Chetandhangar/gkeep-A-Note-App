@@ -1,7 +1,7 @@
 import {useNoteData} from '../../context/data-context'
-import {Card,CardBody,CardTitle,CardText, Button, DropdownItem,DropdownMenu} from 'reactstrap'
+import {Card,CardTitle,CardText, Button} from 'reactstrap'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faPalette, faThumbtack ,faTrash} from '@fortawesome/free-solid-svg-icons'
+import {faThumbtack ,faTrash} from '@fortawesome/free-solid-svg-icons'
 export const OtherNots = ({otherNotes}) => {
     const{note ,setNote} = useNoteData()
 

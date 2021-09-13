@@ -1,6 +1,6 @@
-import {Card,CardBody,CardTitle,CardText, Button,DropdownMenu,DropdownItem,Dropdown,DropdownToggle} from 'reactstrap'
+import {Card,CardBody,CardTitle,CardText, Button} from 'reactstrap'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faPalette, faThumbtack, faTrash} from '@fortawesome/free-solid-svg-icons'
+import {faThumbtack, faTrash} from '@fortawesome/free-solid-svg-icons'
 import {useNoteData} from '../../context/data-context';
 import {PinnedNotes} from './PinnedNotes';
 import {OtherNots} from './OtherNotes'

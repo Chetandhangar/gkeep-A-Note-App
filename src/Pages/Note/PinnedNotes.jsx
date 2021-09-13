@@ -6,7 +6,7 @@ import {  useNoteData } from "../../context/data-context";
 import './note.css'
 export const PinnedNotes = ({pinnedNotes}) => {
 
-    const{note ,setNote, labels , dropdownOpen, setDropdownOpen} = useNoteData()
+    const{note ,setNote} = useNoteData()
 
     function HandlePinnedNote(noteId){
        let ind = note.findIndex((note) => note.id === noteId)
