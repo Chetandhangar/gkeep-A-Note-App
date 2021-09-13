@@ -14,6 +14,7 @@ export function AuthProvider({children}){
     const [isUserLogin , setUserLogin] = useState(isUserLoggedIn)
     const [token , setToken] = useState(savedToken);
     const [loader , setLoader] = useState(false);
+    const [currentUsername, setCurrentUserName] = useState(username)
     const navigate = useNavigate();
     const {state} = useLocation();
     const signupurl = "https://inmind-note.chetandhangar.repl.co/api/signup";
@@ -75,6 +76,7 @@ export function AuthProvider({children}){
     function logout(){
         setUserLogin(false)
         setToken(null)
+        setCurrentUserName("")
         localStorage?.removeItem("login")
         return navigate('/login')
     }
@@ -85,6 +87,7 @@ export function AuthProvider({children}){
         signUpWithCredentials,
         loader,setLoader,
         loginWithCredentials,
+        currentUsername, setCurrentUserName
         }}>
             {children}
         </AuthContext.Provider>
