@@ -69,12 +69,12 @@ export const Note = () => {
 
         return(
             <div className="note-form">
-            <Form style={{backgroundColor : `${selectedColor}`}}>
+            <Form>
                 {console.log(selectedColor,'from render')}
                  <FormGroup row> 
                         <Col sm={4}>
                         <Input 
-                        style={{backgroundColor: "transparent", border:"none", color:"white"}}
+                        style={{backgroundColor: "transparent", border:"none", }}
                              value={title}
                              placeholder="Title"
                              onChange={handleTitleChange}
@@ -91,7 +91,7 @@ export const Note = () => {
                     <FormGroup row> 
                         <Col sm={6}>
                         <Input 
-                            style={{backgroundColor: "transparent", border:"none",color:"white"}}
+                            style={{backgroundColor: "transparent", border:"none",}}
                             type="textarea"
                              value={description}
                              placeholder="Description"

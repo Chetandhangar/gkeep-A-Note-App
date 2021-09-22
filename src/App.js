@@ -1,7 +1,7 @@
 import './App.css';
 import {Home} from './components'
 import {Header} from './components'
-import {RenderLabel, SignUp,Login} from './Pages'
+import { SignUp,Login} from './Pages'
 import { SelectedLabel } from './Pages'
 import { Routes,Route, Navigate} from 'react-router-dom';
 import {useAuth} from './context/auth-context'
@@ -18,19 +18,12 @@ function App() {
     <div className="App">
       <div>
       <Header />
-      <div className="row">
-          <div className="col-4">
-            <RenderLabel />
-          </div>
-          <div className="col-6">   
        <Routes>   
          <PrivateRoute exact path="/" login={isUserLogin} element={<Home />}/>
          <PrivateRoute path="/label/:labelId" login={isUserLogin} element={<SelectedLabel />}/>
          <Route path="/login" element={<Login />} />
          <Route path="/signup" element={<SignUp />} />
        </Routes>
-       </div>
-      </div>
       </div>
     </div>
   );
