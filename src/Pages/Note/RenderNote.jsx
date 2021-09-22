@@ -21,7 +21,7 @@ export const  RenderNote = ()  => {
          setNote([...note]);
         }
      }
-     function  HandleDelteNote(noteId){
+    function  HandleDelteNote(noteId){
         const newNote = note.filter((note) => note.id !== noteId)
         setNote(newNote)
     }
@@ -50,7 +50,7 @@ export const  RenderNote = ()  => {
                                     </div>
                                     <CardText>{description}</CardText>
                                     <FontAwesomeIcon 
-                                    onClick={() => HandleDelteNote(note.id)}
+                                    onClick={() => HandleDelteNote(id)}
                                     icon={faTrash} color="red" className="btn-delete"/>
                                 </CardBody>
                             </Card>
