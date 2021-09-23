@@ -1,16 +1,20 @@
 import {useNoteData} from '../../context/data-context'
-import {Dropdown,Modal,ModalHeader,ModalBody,DropdownItem,DropdownToggle,DropdownMenu, Form,FormGroup,Col,Button,Input} from 'reactstrap'
 import {useState} from 'react'
+import useStyles from './NoteStyle';
+import {Container,Grid,TextField, CssBaseline,Button,IconButton,Menu,MenuItem} from '@material-ui/core';
+import {Modal,ModalHeader,ModalBody} from 'reactstrap'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faPalette, faThumbtack} from '@fortawesome/free-solid-svg-icons';
-import './note.css'
+import { faThumbtack} from '@fortawesome/free-solid-svg-icons';
+import ColorLensIcon from '@material-ui/icons/ColorLens';
+import CreateRoundedIcon from '@material-ui/icons/CreateRounded';
+import AddRoundedIcon from '@material-ui/icons/AddRounded';
+
+import './note.css';
+
+
 export const Note = () => {
     
-    const[dropdownOpen , setDropdownOpen] = useState(false)
     const[modalOpen, setModalOpen] = useState(false)
-    
-    
-
     const {title ,setTitle ,
          description , setDescription, 
          note,setNote,
@@ -21,12 +25,6 @@ export const Note = () => {
          selectedColor ,  setSelectedColor,
         } = useNoteData();
         
-    function handleTitleChange(event){
-        setTitle(event.target.value)
-    }
-    function handleDescriptionChange(event){
-        setDescription(event.target.value)
-    }
 
     function handlePinnedNote(){
         setPinned(!pinned)
@@ -34,6 +32,7 @@ export const Note = () => {
 
 
     function handleAddNote(){
+        alert(title)
         setNote([...note ,
              {
                  id :note.length ,
@@ -54,73 +53,90 @@ export const Note = () => {
 
     console.log(selectedColor,"color")
 
-    const toggle = () => setDropdownOpen(!dropdownOpen)
+
     const toggelModal = () => setModalOpen(!modalOpen)
 
-    const  handleDropdownLabel = labelname => {
-        setSelectedLabel(labelname)
-    }
     const handleSelectedColor = color =>{
         setSelectedColor(color)
         setModalOpen(!modalOpen)
     }
 
+    const [anchorEl, setAnchorEl] = useState(null);
+
+    const handleMenuClick = (event) => {
+      setAnchorEl(event.currentTarget);
+    };
+  
+    const handleMenuClose = (labelname) => {
+        setSelectedLabel(labelname)
+      setAnchorEl(null);
+    };
+    const classes = useStyles()
     console.log(selectedColor)
 
         return(
-            <div className="note-form">
-            <Form>
-                {console.log(selectedColor,'from render')}
-                 <FormGroup row> 
-                        <Col sm={4}>
-                        <Input 
-                        style={{backgroundColor: "transparent", border:"none", }}
-                             value={title}
-                             placeholder="Title"
-                             onChange={handleTitleChange}
+            <Container component="main">
+            <CssBaseline />
+            <div className={classes.paper}  style={{backgroundColor : `${selectedColor}`}}>
+               <Grid  container spacing={2}>
+               <Grid item xs={10}>
+                        <TextField
+                            autoComplete="fname"
+                            name="title"
+                            variant = "outlined"
+                            required
+                            fullWidth
+                            id="title"
+                            label="Title"
+                            autoFocus
+                            value={title}
+                            onChange={(e) => setTitle(title => title = e.target.value)}
                         />
-                        </Col>
-                        <Col sm={1}>
-                         <Button style={{backgroundColor: "transparent",border:"none"}}
-                         onClick={() => handlePinnedNote()}
-                         >
-                         {pinned ? <FontAwesomeIcon icon={faThumbtack} color="red"/> : <FontAwesomeIcon icon={faThumbtack}/>}
-                        </Button> 
-                        </Col>
-                    </FormGroup>
-                    <FormGroup row> 
-                        <Col sm={6}>
-                        <Input 
-                            style={{backgroundColor: "transparent", border:"none",}}
-                            type="textarea"
-                             value={description}
-                             placeholder="Description"
-                             onChange={handleDescriptionChange}
-                        />{" "}
-                        </Col>
-                    </FormGroup>
-                    <FormGroup row>
-                        <Col sm={2}>
-                        <Dropdown isOpen={dropdownOpen} toggle={toggle} > 
-                            <DropdownToggle caret style={{backgroundColor: "transparent",border:"none"}}>
-                                {selectedLabel ? selectedLabel : "Add Label"}
-                            </DropdownToggle>
-                            <DropdownMenu>
-                               {labels.map((label) => (
-                                   <DropdownItem key={label.id}
-                                   onClick={() => handleDropdownLabel(label.labelname)}
-                                   >{label.labelname}</DropdownItem>
+                </Grid>
+                <Grid item xs={1}>
+                    <Button
+                    onClick={() => handlePinnedNote()}
+                    >
+                    {pinned ? <FontAwesomeIcon icon={faThumbtack} color="red"/> : <FontAwesomeIcon icon={faThumbtack}/>}
+                    </Button> 
+                </Grid>
+                <Grid item xs={12}>
+                 <TextField
+                            autoComplete="fname"
+                            name="description"
+                            variant = "outlined"
+                            required
+                            fullWidth
+                            id="description"
+                            label="description"
+                            autoFocus
+                            value={description}
+                            onChange={(e) => setDescription(description => description = e.target.value)}
+                        />
+                </Grid>
+                <Grid item xs={4} sm={2}>
+                <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleMenuClick}>
+                {selectedLabel ? (selectedLabel) : (<CreateRoundedIcon />)}
+                </Button>
+                <Menu
+                    id="simple-menu"
+                    anchorEl={anchorEl}
+                    keepMounted
+                    open={Boolean(anchorEl)}
+                    onClose={handleMenuClose}
+                >
+                      {labels.map((label) => (
+                                   <MenuItem key={label.id}
+                                   onClick={() => handleMenuClose(label.labelname)}
+                                   >{label.labelname}</MenuItem>
                                ))}
-                            </DropdownMenu>
-                        </Dropdown>
-                        </Col>
-                        <Col sm={2}>
-                            <Button
-                            style={{backgroundColor: "transparent",border:"none"}}
-                            onClick={() =>  toggelModal()}
-                            ><FontAwesomeIcon icon={faPalette}/>
-                            </Button>
-                            <Modal isOpen={modalOpen} toggle={toggelModal}  
+                </Menu>
+                </Grid>
+                <Grid item xs={2}>
+                     <IconButton  onClick={() =>  toggelModal()}>
+                     <ColorLensIcon />
+                    </IconButton>   
+                    <Modal isOpen={modalOpen} toggle={toggelModal}  
                             >
                                 <ModalHeader>Color</ModalHeader>
                                 <ModalBody>
@@ -130,17 +146,16 @@ export const Note = () => {
                                         </div>
                                     ))}
                                 </ModalBody>
-                            </Modal>
-                        </Col>
-                        <Col sm={2}>
-                        <Button 
-                            style={{backgroundColor: "transparent", border:"none"}}
-                            onClick={() => handleAddNote()}>
-                            Add Note
-                        </Button>
-                        </Col>
-                    </FormGroup>
-            </Form>
-            </div>  
+                            </Modal>        
+                </Grid>
+                <Grid item className={classes.addNote}>
+                    <IconButton onClick={() => handleAddNote()}>
+                        <AddRoundedIcon />
+                    </IconButton>
+                </Grid>
+               </Grid>
+            </div>
+            </Container>
+
         )
 }

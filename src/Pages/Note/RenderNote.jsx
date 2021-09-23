@@ -29,7 +29,7 @@ export const  RenderNote = ()  => {
 
     if(note.length <= 0){
         return(
-            <div>Notes Added will show Here</div>
+            <div style={{marginTop : "2rem" ,textAlign : "center"}}>Notes Added will show Here</div>
         )
     }
     else if(pinnedNotes.length <=0){

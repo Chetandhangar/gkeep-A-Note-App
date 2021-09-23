@@ -12,7 +12,6 @@
 }
 
 .label-name {
-    color: white;
     font-size: 1rem;
     padding-left: 1rem;
 }
@@ -38,12 +37,11 @@
 
 .label-link{
     text-decoration: none;
-    color: white;
     padding-left: 1rem;
 }
 
 .label-link :hover{
-    color: white;
+
 }
 .label-link-icon{
     margin-left: 0.5rem;

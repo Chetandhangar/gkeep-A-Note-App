@@ -30,7 +30,9 @@ export const Header = () =>{
  
    const handleLogin = () =>{
       navigate('/login')
-   }
+   };
+
+ 
     
   return (
     <div className={classes.root}>

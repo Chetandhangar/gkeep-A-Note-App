@@ -26,14 +26,14 @@ export const RenderLabel = () =>{
 
     return(
         <div className="label-container">
-            <div >
-            <FontAwesomeIcon className="label-link-icon" icon={faAngleDoubleRight} color="white"  />
-            <Link className="label-link" to="/">NOTE</Link>
+            <div style={{marginTop : "2rem"}}>
+            <FontAwesomeIcon className="label-link-icon" icon={faAngleDoubleRight} />
+            <Link className="label-link" to="/" style={{marginBottom : "0.2rem"}}>NOTE</Link>
             </div>
        
                 {labels.map(({id,labelname}) =>(
                     <div key={id} className="label-details">
-                        <FontAwesomeIcon icon={faAngleDoubleRight} color="white"  />
+                        <FontAwesomeIcon icon={faAngleDoubleRight}  />
                         <Link 
                         className="label-link"
                         to={`/label/${id}`}
@@ -43,9 +43,8 @@ export const RenderLabel = () =>{
                     </div>
                 ))}
              <Button 
-             className="btn-label-add"
              onClick={() => toggel()}
-             ><FontAwesomeIcon icon={faPencilAlt} color="white" />
+             ><FontAwesomeIcon icon={faPencilAlt} />
              <strong className="btn-label-add-text">Add Label</strong>
              </Button>
              

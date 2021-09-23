@@ -5,10 +5,6 @@ const LABELS = [
 ]
 const COLORS = [
     {
-        id : 1,
-        color : "black"
-    },
-    {
         id : 2 ,
         color : "green"
     },
