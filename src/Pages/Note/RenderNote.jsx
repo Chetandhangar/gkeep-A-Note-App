@@ -1,4 +1,4 @@
-import {Card,CardBody,CardTitle,CardText, Button} from 'reactstrap'
+import {Card,CardBody,CardTitle,CardText, Button,Col} from 'reactstrap'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faThumbtack, faTrash} from '@fortawesome/free-solid-svg-icons'
 import {useNoteData} from '../../context/data-context';
@@ -34,27 +34,34 @@ export const  RenderNote = ()  => {
     }
     else if(pinnedNotes.length <=0){
         return(
-            <div className="note-details">
-                {note.map(({id,title,description, isPinned,notecolor}) => (
-                    <div key={id}>
-                         <Card className="note-card" style={{backgroundColor : `${notecolor}`}}>
-                                <CardBody>
-                                    <div className="row">
-                                    <CardTitle className="col-4">{title}</CardTitle>
-                                    <Button  style={{backgroundColor: "transparent",border:"none"}} 
-                                    className="col-1"
-                                    onClick={() => HandlePinnedNote(id)}
-                                    >
-                                    {isPinned ? <FontAwesomeIcon icon={faThumbtack} color="red"/> : <FontAwesomeIcon icon={faThumbtack}/>}
-                                    </Button> 
-                                    </div>
-                                    <CardText>{description}</CardText>
-                                    <FontAwesomeIcon 
-                                    onClick={() => HandleDelteNote(id)}
-                                    icon={faTrash} color="red" className="btn-delete"/>
-                                </CardBody>
-                            </Card>
-                    </div>
+            <div className="pinned-note-details">
+                {note.map((note) => (
+                      <div key={note.id}className="note-card-details">
+                      <Card className="note-card" style={{backgroundColor : `${note.notecolor}`}}>
+                          <CardBody>
+                              <div className="row">
+                              <CardTitle className="col">{note.title}</CardTitle>
+                              <Button 
+                              className="col"
+                              onClick={() => HandlePinnedNote(note.id)}
+                              >
+                              {note.isPinned ? <FontAwesomeIcon icon={faThumbtack} color="red"/> : <FontAwesomeIcon icon={faThumbtack} color="black"/>}
+                              </Button> 
+                              </div>
+                              <CardText>{note.description}</CardText>
+                              <div className="row">
+                                  <Col >
+                                      <CardText>{note.label}</CardText>
+                                  </Col>
+                                  <Col>
+                                  <FontAwesomeIcon 
+                                      onClick={() => HandleDelteNote(note.id)}
+                                      icon={faTrash} color="red" className="btn-delete"/>
+                                  </Col>
+                              </div>
+                          </CardBody>
+                      </Card>
+                      </div>
                 ))}
             </div>
         )

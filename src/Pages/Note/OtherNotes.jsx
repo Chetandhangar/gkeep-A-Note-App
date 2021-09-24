@@ -35,11 +35,12 @@ export const OtherNots = ({otherNotes}) => {
                        <Card className="note-card" style={{backgroundColor : `${note.notecolor}`}}>
                                 <div className="row">
                                 <CardTitle className="col-4">{note.title}</CardTitle>
-                                <Button  style={{backgroundColor: "transparent",border:"none"}} 
+                                <Button 
+                                style={{backgroundColor: "transparent",border:"none"}} 
                                 className="col-1"
                                 onClick={() => HandlePinnedNote(note.id)}
                                 >
-                                {note.isPinned ? <FontAwesomeIcon icon={faThumbtack} color="red"/> : <FontAwesomeIcon icon={faThumbtack}/>}
+                                {note.isPinned ? <FontAwesomeIcon icon={faThumbtack} color="red"/> : <FontAwesomeIcon icon={faThumbtack} color="black"/>}
                                 </Button> 
                                 </div>
                                 <CardText>{note.description}</CardText>
